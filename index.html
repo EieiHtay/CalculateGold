@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculate Gold Price</title>
+	<style type="text/css">
+		body{
+			background-color: gold;
+		}
+	</style>
+	<script type="text/javascript">
+		function calculate(){
+			var gram=parseInt(document.myform.gram.value);
+			var price=parseInt(document.myform.price.value);
+
+			var kyat=parseInt(gram/16.606);
+
+			var p=(gram/16.606)-kyat;
+			var pae= parseInt(p*16) ;
+
+			var y=(p*16)-pae;
+			var yway=(y*8).toFixed(1);
+
+			var kpy=kyat+'-kyat '+pae+'-pae '+yway+'-yway ';
+			console.log(kpy);
+			document.getElementById('kpy').textContent=kpy;
+
+			var total=kyat*price+pae*(price/16)+yway*(price/128);
+			console.log(total);
+			document.getElementById('total').textContent=total;
+		}
+	</script>
+</head>
+<body>
+
+	<h1>Calculation of Gold Price</h1>
+
+	<table cellpadding ="10">
+		<tr>
+			<td>
+				<form name="myform">
+					<table border="0" cellpadding="10">
+						<tr>
+							<td>Gold Gram:</td>
+							<td><input type="number" name="gram"></td>
+						</tr>
+						<tr>
+							<td>Current Gold Price for 1 kyatar:</td>
+							<td><input type="number" name="price"></td>
+						</tr>
+						<tr>
+							<td>
+								<input type="button" value="Calculate" onclick="calculate()">
+							</td>
+							<td>
+								<input type="reset" value="Clear">
+							</td>
+						</tr>
+						<tr>
+							<td>Kyat-Pae-Yway:</td>
+							<td><label id="kpy"></label></td>
+						</tr>
+						<tr>
+							<td>Total Price:</td>
+							<td><label id="total"></label></td>
+						</tr>
+					</table>
+				</form>
+			</td>
+
+			<td>
+				<img src="g.jpg" width="300" height="300">
+			</td>
+		</tr>
+	</table>
+	
+</body>
+</html>
